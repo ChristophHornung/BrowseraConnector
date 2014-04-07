@@ -12,6 +12,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SlnResources", "SlnResources", "{F5A441C8-2963-4D8D-AA60-9485AADA891E}"
 	ProjectSection(SolutionItems) = preProject
 		BrowseraConnector.sln.DotSettings = BrowseraConnector.sln.DotSettings
+		LICENSE = LICENSE
+		README.md = README.md
 	EndProjectSection
 EndProject
 Global
