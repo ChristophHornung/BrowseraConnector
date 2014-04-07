@@ -43,6 +43,7 @@
     <Compile Include="BrowseraTestExecutor.cs" />
     <Compile Include="BrowserRendering.cs" />
     <Compile Include="Browsers.cs" />
+    <Compile Include="ConnectionUrl.cs" />
     <Compile Include="SiteLoginConfiguration.cs" />
     <Compile Include="ExcludeCrawlPages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -28,15 +28,11 @@ namespace BrowseraConnector
     /// <summary>
     /// The connector for the lowest api level.
     /// </summary>
+    /// <remarks>This is the http access to the xml structures that browsera supports. 
+    /// This api only provides limited access though, since some methods are only available from their web interface.
+    /// </remarks>
     public class BrowseraConnector
     {
-        private const string TestRunsUrl = "https://api.browsera.com/v0.1a/web_sites/{1}/test_runs.xml?api_key={0}";
-
-        private const string GetTestRunUrl =
-            "https://api.browsera.com/v0.1a/web_sites/{1}/test_runs/{2}.xml?api_key={0}";
-
-        private const string WebSitesUrl = "https://api.browsera.com/v0.1a/web_sites.xml?api_key={0}";
-        private const string GetWebSiteUrl = "https://api.browsera.com/v0.1a/web_sites/{1}.xml?api_key={0}";
         private readonly string apiKey;
 
         /// <summary>
@@ -55,7 +51,7 @@ namespace BrowseraConnector
         /// <returns>All test runs for the given web site.</returns>
         public IEnumerable<TestRun> ListTestRuns(int webSiteId)
         {
-            WebRequest request = WebRequest.Create(String.Format(TestRunsUrl, this.apiKey, webSiteId));
+            WebRequest request = WebRequest.Create(String.Format(ConnectionUrl.TestRunsUrl, this.apiKey, webSiteId));
             WebResponse response = request.GetResponse();
             using (Stream responseStream = response.GetResponseStream())
             {
@@ -73,7 +69,7 @@ namespace BrowseraConnector
         /// <returns>The created test run.</returns>
         public TestRun CreateTestRun(int webSiteId, TestRunConfiguration testRunConfiguration)
         {
-            WebRequest request = WebRequest.Create(String.Format(TestRunsUrl, this.apiKey, webSiteId));
+            WebRequest request = WebRequest.Create(String.Format(ConnectionUrl.TestRunsUrl, this.apiKey, webSiteId));
             request.Method = "POST";
             request.ContentType = "application/xml";
             using (Stream requestStream = request.GetRequestStream())
@@ -98,7 +94,7 @@ namespace BrowseraConnector
         /// <returns>The test run with the given id for the web site with the given id.</returns>
         public TestRun GetTestRun(int webSiteId, int id)
         {
-            WebRequest request = WebRequest.Create(String.Format(GetTestRunUrl, this.apiKey, webSiteId, id));
+            WebRequest request = WebRequest.Create(String.Format(ConnectionUrl.GetTestRunUrl, this.apiKey, webSiteId, id));
             WebResponse response = request.GetResponse();
             using (Stream responseStream = response.GetResponseStream())
             {
@@ -114,7 +110,7 @@ namespace BrowseraConnector
         /// <returns>All web site configurations.</returns>
         public IEnumerable<WebsiteTestConfiguration> ListWebSites()
         {
-            WebRequest request = WebRequest.Create(String.Format(WebSitesUrl, this.apiKey));
+            WebRequest request = WebRequest.Create(String.Format(ConnectionUrl.WebSitesUrl, this.apiKey));
             WebResponse response = request.GetResponse();
             using (Stream responseStream = response.GetResponseStream())
             {
@@ -131,7 +127,7 @@ namespace BrowseraConnector
         /// <returns>The created configuration.</returns>
         public WebsiteTestConfiguration CreateWebSite(WebsiteTestConfiguration website)
         {
-            WebRequest request = WebRequest.Create(String.Format(WebSitesUrl, this.apiKey));
+            WebRequest request = WebRequest.Create(String.Format(ConnectionUrl.WebSitesUrl, this.apiKey));
             request.Method = "POST";
             request.ContentType = "application/xml";
             using (Stream requestStream = request.GetRequestStream())
