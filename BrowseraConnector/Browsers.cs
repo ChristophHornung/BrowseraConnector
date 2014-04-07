@@ -29,6 +29,9 @@ namespace BrowseraConnector
     [Serializable]
     public class Browsers
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="Browsers"/> class.
+        /// </summary>
         public Browsers()
         {
             this.Type = "array";
