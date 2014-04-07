@@ -1,13 +1,18 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.30324.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowseraConnector", "BrowseraConnector\BrowseraConnector.csproj", "{6A56CE38-886D-4229-93D8-CFDC4FD4F6C2}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tester", "Tester\Tester.csproj", "{691C2F06-FD20-438E-8E01-63067D7F3BC5}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BrowseraPoller", "BrowseraPoller\BrowseraPoller.csproj", "{77A39976-3187-431D-B1C5-374AFB8EADA7}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SlnResources", "SlnResources", "{F5A441C8-2963-4D8D-AA60-9485AADA891E}"
+	ProjectSection(SolutionItems) = preProject
+		BrowseraConnector.sln.DotSettings = BrowseraConnector.sln.DotSettings
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
