@@ -19,9 +19,11 @@
 
 namespace BrowseraBuildTasks
 {
+    using System;
     using System.Collections.Generic;
     using System.IO;
     using BrowseraConnector;
+    using Microsoft.Build.Framework;
     using Microsoft.Build.Utilities;
 
     /// <summary>
@@ -57,7 +59,12 @@ namespace BrowseraBuildTasks
 
         public override bool Execute()
         {
-            Directory.CreateDirectory(this.ResultDirectory);
+            if (!Directory.Exists(this.ResultDirectory))
+            {
+                this.Log.LogMessage(MessageImportance.Low, "Creating result directory " + this.ResultDirectory);
+                Directory.CreateDirectory(this.ResultDirectory);
+            }
+
             BrowseraTestExecutor executor = new BrowseraTestExecutor(this.ApiKey);
             executor.CreateSiteAndRunTestAndPollResult(this.GetWebsiteTestConfiguration(), this.ResultDirectory);
             return true;
@@ -73,7 +80,7 @@ namespace BrowseraBuildTasks
                     BrowserValues = new List<string>(this.Browsers)
                 },
                 MaxCrawlPages = 0,
-                Name = this.SiteName,
+                Name = this.SiteName + "(" + DateTime.UtcNow + ")",
                 Urls = new Urls() {UrlValues = new List<string>(this.Pages)},
                 SiteLoginConfiguration = this.GetLoginConfiguration()
             };
