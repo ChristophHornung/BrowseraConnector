@@ -77,6 +77,11 @@ namespace BrowseraConnector
                 throw new InvalidOperationException("Could not find specified site.");
             }
 
+            return this.RunTestOnSiteInternal(site, poll, targetDirectory);
+        }
+
+        private TestRun RunTestOnSiteInternal(WebsiteTestConfiguration site, bool poll, string targetDirectory)
+        {
             TestRun testRun = this.connector.CreateTestRun(site.Id, CreateTestRunConfiguration());
 
             if (poll)
@@ -102,6 +107,17 @@ namespace BrowseraConnector
         {
             WebsiteTestConfiguration site = this.connector.CreateWebSite(configuration);
             this.connector.CreateTestRun(site.Id, CreateTestRunConfiguration());
+        }
+
+        /// <summary>
+        /// Creates a new site and runs a test while polling the results.
+        /// </summary>
+        /// <param name="configuration">The configuration for the new site.</param>
+        /// <param name="targetDirectory">The target directory to poll into.</param>
+        public void CreateSiteAndRunTestAndPollResult(WebsiteTestConfiguration configuration, string targetDirectory)
+        {
+            WebsiteTestConfiguration site = this.connector.CreateWebSite(configuration);
+            RunTestOnSiteInternal(site, true, targetDirectory);
         }
     }
 }
