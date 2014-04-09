@@ -103,10 +103,10 @@ namespace BrowseraConnector
         /// Creates a new site and runs a test.
         /// </summary>
         /// <param name="configuration">The configuration for the new site.</param>
-        public void CreateSiteAndRunTest(WebsiteTestConfiguration configuration)
+        public TestRun CreateSiteAndRunTest(WebsiteTestConfiguration configuration)
         {
             WebsiteTestConfiguration site = this.connector.CreateWebSite(configuration);
-            this.connector.CreateTestRun(site.Id, CreateTestRunConfiguration());
+            return this.connector.CreateTestRun(site.Id, CreateTestRunConfiguration());
         }
 
         /// <summary>
@@ -114,10 +114,10 @@ namespace BrowseraConnector
         /// </summary>
         /// <param name="configuration">The configuration for the new site.</param>
         /// <param name="targetDirectory">The target directory to poll into.</param>
-        public void CreateSiteAndRunTestAndPollResult(WebsiteTestConfiguration configuration, string targetDirectory)
+        public TestRun CreateSiteAndRunTestAndPollResult(WebsiteTestConfiguration configuration, string targetDirectory)
         {
             WebsiteTestConfiguration site = this.connector.CreateWebSite(configuration);
-            RunTestOnSiteInternal(site, true, targetDirectory);
+            return RunTestOnSiteInternal(site, true, targetDirectory);
         }
     }
 }
