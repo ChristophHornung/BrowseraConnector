@@ -75,7 +75,8 @@ namespace Tester
                 Password = "testtest",
                 UserName = "test",
                 PasswordInputId = "splash-password",
-                UserNameInputId = "splash-username"
+                UserNameInputId = "splash-username",
+                
             };
         }
     }

@@ -81,5 +81,23 @@ namespace BrowseraConnector
         /// </value>
         [XmlElement("password_input_id")]
         public string PasswordInputId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the submit input id.
+        /// </summary>
+        /// <value>
+        /// The submit input id.
+        /// </value>
+        [XmlElement("submit_input_id")]
+        public string SubmitInputId { get; set; }
+
+        /// <summary>
+        /// Gets or sets the submit javascript.
+        /// </summary>
+        /// <value>
+        /// The submit javascript.
+        /// </value>
+        [XmlElement("submit_javascript")]
+        public string SubmitJavascript { get; set; }
     }
 }
