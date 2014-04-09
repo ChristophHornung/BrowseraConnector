@@ -1,6 +1,6 @@
 BrowseraConnector
 =================
-BrowseraConnector is a small C# library to access the API of [browsera](http://www.browsera.com). 
+BrowseraConnector is a small C# library to access the API of [Browsera](http://www.browsera.com). 
 ## Features
 - Low level wrapper to directly access the API
 - Wrapper to start a test run or create new sites
