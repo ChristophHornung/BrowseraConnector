@@ -42,8 +42,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BrowseraBaseTask.cs" />
-    <Compile Include="ComplexBrowseraTestTask.cs" />
-    <Compile Include="SimpleBrowseraTestTask.cs" />
+    <Compile Include="CreateAndRunBrowseraTestTask.cs" />
+    <Compile Include="RunBrowseraTestTask.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

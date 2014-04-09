@@ -26,9 +26,9 @@ namespace BrowseraBuildTasks
     /// <summary>
     /// A build task to automate creation and starts of browsera tasks
     /// </summary>
-    public class ComplexBrowseraTestTask : BrowseraBaseTask
+    public class CreateAndRunBrowseraTestTask : BrowseraBaseTask
     {
-        public ComplexBrowseraTestTask() : base(true)
+        public CreateAndRunBrowseraTestTask() : base(true)
         {
         }
 
