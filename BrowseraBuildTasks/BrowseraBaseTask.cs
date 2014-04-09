@@ -33,10 +33,13 @@ namespace BrowseraBuildTasks
             this.createNewSite = createNewSite;
         }
 
+        [Required]
         public string SiteName { get; set; }
 
+        [Required]
         public string ApiKey { get; set; }
 
+        [Required]
         public string ResultDirectory { get; set; }
 
         public override bool Execute()
