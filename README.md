@@ -12,7 +12,6 @@ BrowseraConnector is a small C# library to access the API of [Browsera](http://w
 
 ## Todo
 - Proper exceptions
-- Wrap into MSBuild task
 
 
 
