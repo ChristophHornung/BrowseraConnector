@@ -1,2 +1,7 @@
 BrowseraConnector
 =================
+## Todo
+- Proper exceptions
+
+
+
