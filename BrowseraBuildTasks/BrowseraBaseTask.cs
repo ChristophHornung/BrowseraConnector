@@ -24,6 +24,9 @@ namespace BrowseraBuildTasks
     using Microsoft.Build.Framework;
     using Microsoft.Build.Utilities;
 
+    /// <summary>
+    /// The base task for browsera test runs.
+    /// </summary>
     public abstract class BrowseraBaseTask : Task
     {
         private readonly bool createNewSite;
@@ -33,12 +36,30 @@ namespace BrowseraBuildTasks
             this.createNewSite = createNewSite;
         }
 
+        /// <summary>
+        /// Gets or sets the name of the site to run the test on.
+        /// </summary>
+        /// <value>
+        /// The name of the site to run the test on.
+        /// </value>
         [Required]
         public string SiteName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the API key.
+        /// </summary>
+        /// <value>
+        /// The API key.
+        /// </value>
         [Required]
         public string ApiKey { get; set; }
 
+        /// <summary>
+        /// Gets or sets the directory where the test results are polled into.
+        /// </summary>
+        /// <value>
+        /// The result directory.
+        /// </value>
         [Required]
         public string ResultDirectory { get; set; }
 
@@ -59,9 +80,14 @@ namespace BrowseraBuildTasks
             {
                 executor.RunTestOnSiteAndPollResult(this.SiteName, this.ResultDirectory);
             }
+
             return true;
         }
 
+        /// <summary>
+        /// Gets the website test configuration.
+        /// </summary>
+        /// <returns>The website that should be created.</returns>
         protected abstract WebsiteTestConfiguration GetWebsiteTestConfiguration();
     }
 }

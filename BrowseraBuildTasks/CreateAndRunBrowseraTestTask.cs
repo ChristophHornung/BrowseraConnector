@@ -22,36 +22,107 @@ namespace BrowseraBuildTasks
     using System;
     using System.Collections.Generic;
     using BrowseraConnector;
+    using Microsoft.Build.Framework;
 
     /// <summary>
-    /// A build task to automate creation and starts of browsera tasks
+    /// A build task to automate creation and start of a Browsera test run.
     /// </summary>
     public class CreateAndRunBrowseraTestTask : BrowseraBaseTask
     {
+        /// <summary>
+        /// Initializes a new instance of the <see cref="CreateAndRunBrowseraTestTask"/> class.
+        /// </summary>
         public CreateAndRunBrowseraTestTask() : base(true)
         {
         }
 
+        /// <summary>
+        /// Gets or sets the custom javascript used for the login configuration.
+        /// </summary>
+        /// <value>
+        /// The custom javascript.
+        /// </value>
         public string CustomJavascript { get; set; }
 
+        /// <summary>
+        /// Gets or sets the login URL.
+        /// </summary>
+        /// <value>
+        /// The login URL.
+        /// </value>
         public string LoginUrl { get; set; }
 
+        /// <summary>
+        /// Gets or sets the pages that should be tested.
+        /// </summary>
+        /// <value>
+        /// The pages.
+        /// </value>
+        [Required]
         public string[] Pages { get; set; }
 
+        /// <summary>
+        /// Gets or sets the browsers the test should use.
+        /// </summary>
+        /// <value>
+        /// The browsers.
+        /// </value>
+        [Required]
         public string[] Browsers { get; set; }
 
+        /// <summary>
+        /// Gets or sets the base line browser to use for the test.
+        /// </summary>
+        /// <value>
+        /// The base line browser.
+        /// </value>
+        [Required]
         public string BaseLineBrowser { get; set; }
 
+        /// <summary>
+        /// Gets or sets the submit input id for the login configuration.
+        /// </summary>
+        /// <value>
+        /// The submit input id.
+        /// </value>
         public static string SubmitInputId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the user name input id for the login configuration.
+        /// </summary>
+        /// <value>
+        /// The user name input id.
+        /// </value>
         public static string UserNameInputId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the password input id for the login configuration.
+        /// </summary>
+        /// <value>
+        /// The password input id.
+        /// </value>
         public static string PasswordInputId { get; set; }
 
+        /// <summary>
+        /// Gets or sets the name of the user for the login configuration.
+        /// </summary>
+        /// <value>
+        /// The name of the user.
+        /// </value>
         public static string UserName { get; set; }
 
+        /// <summary>
+        /// Gets or sets the password for the login configuration.
+        /// </summary>
+        /// <value>
+        /// The password.
+        /// </value>
         public static string Password { get; set; }
 
+        /// <summary>
+        /// Gets the website test configuration.
+        /// </summary>
+        /// <returns>The website that should be created.</returns>
         protected override WebsiteTestConfiguration GetWebsiteTestConfiguration()
         {
             return new WebsiteTestConfiguration()
@@ -72,7 +143,7 @@ namespace BrowseraBuildTasks
         {
             return new SiteLoginConfiguration()
             {
-                IsWebsiteLogin = true,
+                IsWebsiteLogin = IsWebsiteLogin,
                 LoginPageUrl = this.LoginUrl,
                 Password = Password,
                 UserName = UserName,
@@ -82,5 +153,13 @@ namespace BrowseraBuildTasks
                 SubmitJavascript = this.CustomJavascript
             };
         }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to use a website login.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if this instance is website login; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsWebsiteLogin { get; set; }
     }
 }
