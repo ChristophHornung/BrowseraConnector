@@ -24,7 +24,9 @@ namespace BrowseraPoller
     using BrowseraConnector;
 
     /// <summary>
-    /// The main command line poller.
+    /// The main command line poller. This is a simple command line utility that 
+    /// allows running a test on an already configured site and polling the result to a given
+    /// directory.
     /// </summary>
     internal class Program
     {
