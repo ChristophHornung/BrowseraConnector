@@ -94,7 +94,8 @@ namespace BrowseraConnector
         /// <returns>The test run with the given id for the web site with the given id.</returns>
         public TestRun GetTestRun(int webSiteId, int id)
         {
-            WebRequest request = WebRequest.Create(String.Format(ConnectionUrl.GetTestRunUrl, this.apiKey, webSiteId, id));
+            WebRequest request =
+                WebRequest.Create(String.Format(ConnectionUrl.GetTestRunUrl, this.apiKey, webSiteId, id));
             WebResponse response = request.GetResponse();
             using (Stream responseStream = response.GetResponseStream())
             {
@@ -149,10 +150,16 @@ namespace BrowseraConnector
         /// </summary>
         /// <param name="id">The id.</param>
         /// <returns>The web site configuration for the given id.</returns>
-        /// <exception cref="System.NotImplementedException"></exception>
         public WebsiteTestConfiguration GetWebSite(int id)
         {
-            throw new NotImplementedException();
+            WebRequest request = WebRequest.Create(String.Format(ConnectionUrl.GetWebSiteUrl, this.apiKey, id));
+            WebResponse response = request.GetResponse();
+            using (Stream responseStream = response.GetResponseStream())
+            {
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof (WebsiteTestConfiguration));
+                WebsiteTestConfiguration result = (WebsiteTestConfiguration) xmlSerializer.Deserialize(responseStream);
+                return result;
+            }
         }
     }
 }
