@@ -85,7 +85,7 @@ namespace BrowseraBuildTasks
         /// <value>
         /// The submit input id.
         /// </value>
-        public static string SubmitInputId { get; set; }
+        public string SubmitInputId { get; set; }
 
         /// <summary>
         /// Gets or sets the user name input id for the login configuration.
@@ -93,7 +93,7 @@ namespace BrowseraBuildTasks
         /// <value>
         /// The user name input id.
         /// </value>
-        public static string UserNameInputId { get; set; }
+        public string UserNameInputId { get; set; }
 
         /// <summary>
         /// Gets or sets the password input id for the login configuration.
@@ -101,7 +101,7 @@ namespace BrowseraBuildTasks
         /// <value>
         /// The password input id.
         /// </value>
-        public static string PasswordInputId { get; set; }
+        public string PasswordInputId { get; set; }
 
         /// <summary>
         /// Gets or sets the name of the user for the login configuration.
@@ -109,7 +109,7 @@ namespace BrowseraBuildTasks
         /// <value>
         /// The name of the user.
         /// </value>
-        public static string UserName { get; set; }
+        public string UserName { get; set; }
 
         /// <summary>
         /// Gets or sets the password for the login configuration.
@@ -117,7 +117,7 @@ namespace BrowseraBuildTasks
         /// <value>
         /// The password.
         /// </value>
-        public static string Password { get; set; }
+        public string Password { get; set; }
 
         /// <summary>
         /// Gets the website test configuration.
