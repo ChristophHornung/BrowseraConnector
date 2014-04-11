@@ -34,7 +34,7 @@ BrowseraConnector is a small C# library to access the API of [Browsera](http://w
 	<UserName>Your username to login</UserName>
 	<Password>Your password to login</Password>
 	<LoginUrl>https://mysite.com/loginPage</LoginUrl>
-	<IsWebsiteLogin>If we're going to use the login details or not</IsWebsiteLogin>
+	<IsWebsiteLogin>If we're going to use the login details and custom javascript or not</IsWebsiteLogin>
 	<SiteName>The name of your test (Browsera calls this a 'site')</SiteName>
 	<ApiKey>Your API key</ApiKey>
   </PropertyGroup>
