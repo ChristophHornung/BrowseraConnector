@@ -120,6 +120,22 @@ namespace BrowseraBuildTasks
         public string Password { get; set; }
 
         /// <summary>
+        /// Gets or sets a value indicating whether to use a website login.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> if this instance is website login; otherwise, <c>false</c>.
+        /// </value>
+        public bool IsWebsiteLogin { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether to use the login functionality at all.
+        /// </summary>
+        /// <value>
+        /// <c>true</c> will send the xml configuration for login; otherwise, <c>false</c> will omit this piece of xml from the API call.
+        /// </value>
+        public bool UseLogin { get; set; }
+
+        /// <summary>
         /// Gets the website test configuration.
         /// </summary>
         /// <returns>The website that should be created.</returns>
@@ -135,7 +151,7 @@ namespace BrowseraBuildTasks
                 MaxCrawlPages = 0,
                 Name = this.SiteName + " (" + DateTime.UtcNow + ")",
                 Urls = new Urls() {UrlValues = new List<string>(this.Pages)},
-                SiteLoginConfiguration = this.GetLoginConfiguration()
+                SiteLoginConfiguration = UseLogin ? GetLoginConfiguration() : null
             };
         }
 
@@ -153,13 +169,5 @@ namespace BrowseraBuildTasks
                 SubmitJavascript = this.CustomJavascript
             };
         }
-
-        /// <summary>
-        /// Gets or sets a value indicating whether to use a website login.
-        /// </summary>
-        /// <value>
-        /// <c>true</c> if this instance is website login; otherwise, <c>false</c>.
-        /// </value>
-        public bool IsWebsiteLogin { get; set; }
     }
 }
