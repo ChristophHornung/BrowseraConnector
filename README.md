@@ -14,6 +14,9 @@ BrowseraConnector is a small C# library to access the API of [Browsera](http://w
 - Proper exceptions
 - ~~Wrap into an MSBuild task~~
 
+## Limitations
+Currently the Browsera API is limited to adding new sites only (no edit or deletion). So for every test with a site configuration a new site is created and the test run on that site. Because the name has to differ the date of the run is appended to the site name.
+
 ## MSBuild Sample
 
 ```
