@@ -90,6 +90,16 @@ namespace BrowseraConnector
                 }
             }
 
+            // And all page differences.
+            using (var writer = new StreamWriter(directory + Path.DirectorySeparatorChar + "layoutDifferences.txt"))
+            {
+                writer.WriteLine("Page,Number of layout differences");
+                foreach (WebPageResult webPage in run.WebPages)
+                {
+                    writer.WriteLine(webPage.Url + "," + webPage.NumberOfLayoutDifferences);
+                }
+            }
+
             return run;
         }
 
